@@ -56,3 +56,5 @@ class Teste_Produtos():
         
         self.driver.find_element(By.ID, "react-burger-menu-btn").click() #entra no menu
         self.driver.find_element(By.ID, "logout_sidebar_link").click() #faz log out no site
+
+        
