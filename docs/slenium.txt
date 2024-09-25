@@ -3,3 +3,10 @@ Existem 3 pontos principais de fragilidade em uma automação de teste:
 1 - eletor errado, seletor mudou, seletor dinâmico
 2- sincronismo - tipos de espera - ( waits)
 3- programação exótica
+
+Formas de criação e organização do script
+
+1- Gravação (capture & playback / record & play)
+2- Exportação e Importação de código fonte (script simples)
+3- Criasr o script simples manualmente --> script de teste = 1 arquivo
+4- Script com cucumber / behave --> 2 arquivos (.feature em gherkin e .py que é o script de automação)
