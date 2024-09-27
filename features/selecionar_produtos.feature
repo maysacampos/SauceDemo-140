@@ -1,28 +1,13 @@
-Feature: Selecionar Produto
+Feature: Fluxo de Compras
 
-    Scenario: Selecionar produto "Sauce Labs Backpack"
-        Given que acesso o site Sauce Demo
-        When preencho os campos de login com usuario standard_user e senha secret_sauce
-        Then sou direcionado para página Home
-
-    Scenario: Login com a senha invalida
-        Given que entro no site Sauce Demo
-        When preencho os campos de login com usuario standard_user e senha laranja
-        Then exibe a mensagem de erro no login
-
-    Scenario Outline: Login Negativo
-        Given que entro no site Sauce Demo
-        When preencho os campos de login com usuario <usuario> e senha <senha>
-        Then exibe a <mensagem> de erro no login
-
-        Examples: 
-        | id | usuario       | senha        | mensagem                                                                   |
-        | 01 | standard_user | laranja      | Epic sadface: Username and password do not match any user in this service  |
-        | 02 | standard_user |              | Epic sadface: Password is required                                         |
-        | 03 |               | secret_sauce | Epic sadface: Username is required                                         |
-        | 04 | juca          | secret_sauce | Epic sadface: Username and password do not match any user in this service  |
-        | 05 | juca          | laranja      | Epic sadface: Username and password do not match any user in this service  |
-        | 06 | juca          |              | Epic sadface: Password is required                                         |
-        | 07 |               |              | Epic sadface: Username is required                                         |
-        | 08 |               | laranja      | Epic sadface: Username is required                                         |
-
+    Scenario: O usuário seleciona um produto e o adiciona ao carrinho
+        Given que eu estou na página de login
+        When eu faço login com "standard_user" e "secret_sauce"
+        Then eu devo ver a página de produtos
+        And eu vejo o produto "Sauce Labs Backpack" com o preço "$29.99"
+        When eu adiciono o produto ao carrinho
+        Then o carrinho deve ter "1" item
+        When eu visualizo o carrinho
+        Then eu vejo que o carrinho contém "1" "Sauce Labs Backpack" com o preço "$29.99"
+        When eu removo o produto do carrinho
+        And eu faço logout
